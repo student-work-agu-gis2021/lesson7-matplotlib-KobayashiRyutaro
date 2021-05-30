@@ -18,6 +18,14 @@
 
 # YOUR CODE HERE 1 to read the data into data and parse dates
 
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plot
+fp = "data/helsini-vantaa.csv"
+data = pd.read_csv(
+  fp, parse_dates = ['DATE'], index_col = ['DATE']
+)
+
 # This test print should print first five rows
 print(data.head())
 
@@ -32,6 +40,7 @@ print(len(data))
 
 # YOUR CODE HERE 2
 
+selection = data.loc['1988-01-01':'2018-12-31']
 # Check that the data was read in correctly:
 selection.head()
 
@@ -52,12 +61,23 @@ print("Number of rows:", len(selection))
 
 # YOUR CODE HERE 3
 
+ax = selection['TEMP_C'].plot(
+  figsize = (20, 6),
+  color ='black',marker = '.',
+  title = "Helsinki-Vantaa Airport",
+  linestyle = 'solid',
+  xlabel = 'Time', ylabel = 'Temperature[Celsius]'
+)
+plt.grid()
+
 # Set output file name
 outputfp = ""
 
 # Save plot as image
 # YOUR CODE HERE 4
 
+outputfp = "temp_line_plot.png"
+plt.savefig(outputfp)
 import os
 
 #Check that output file exists (also open the file and check that the plot looks ok!)
