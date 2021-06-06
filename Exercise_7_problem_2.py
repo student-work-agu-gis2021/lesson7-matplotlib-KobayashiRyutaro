@@ -20,8 +20,8 @@
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plot
-fp = "data/helsini-vantaa.csv"
+import matplotlib.pyplot as plt
+fp = "data/helsinki-vantaa.csv"
 data = pd.read_csv(
   fp, parse_dates = ['DATE'], index_col = ['DATE']
 )
